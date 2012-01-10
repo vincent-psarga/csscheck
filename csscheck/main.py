@@ -29,6 +29,35 @@ def build_mappings(content):
     """  Builds the mapping dictionnaries rule_to_selectors and selector_to_rules
     form the content file.
 
+    >>> build_mapping('')
+    {}, {}
+
+    >>> content = """
+    ... my_selector {
+    ...   display: none;
+    ... }
+    ... """
+    >>> build_mapping(content)
+    {'display: none;': ['my_selector']}, {'my_selector': ['display: none;']}
+
+    >>> content = """
+    ... my_selector {
+    ...   display: none;
+    ...   text-align: left;
+    ... }
+    ... another_selector {
+    ...   text-align: left;
+    ...   display: block;
+    ... }
+    ... """
+
+    >>> build_mapping(content)
+    {'display: none;': ['my_selector'],
+     'display: block;': ['another_selector'],
+     'text-align: left': ['my_selector, 'another_selector']},
+    {'my_selector': ['display: none;', 'text-align: left;'],
+     'another_selector': ['display: block;', 'text-align: left;'],
+    }
     """
     sheet = cssutils.CSSParser(loglevel='CRITICAL').parseString(content, validate = False)
     rule_to_selectors = {}

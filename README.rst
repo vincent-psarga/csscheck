@@ -14,7 +14,11 @@ The tool can be installed using easy_install:
 
   easy_install csscheck
 
-XXX - find a way to make a usable alias.
+You can then define an alias to run the tool (in your .bashrc or
+.profile file):
+
+  alias css_check="python -m csscheck.__main__"
+
 
 Usage
 -----
