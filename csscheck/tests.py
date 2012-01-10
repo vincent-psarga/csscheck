@@ -13,7 +13,13 @@ def suite():
         doctest.DocTestSuite(
             main,
             optionflags=OPTIONFLAGS),
+        doctest.DocFileSuite(
+            '../README.rst',
+            optionflags=OPTIONFLAGS),
+
         ])
+
+test_suite = suite
 
 if __name__ == '__main__':
     unittest.TextTestRunner().run(suite())

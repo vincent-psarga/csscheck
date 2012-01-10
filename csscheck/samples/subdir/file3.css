@@ -1,0 +1,11 @@
+/* A CSS file located in a sub-directory */
+
+.overlay .close {
+        background-image:url('overlay_close.png');
+        position:absolute;
+        left: -15px;
+        top: -15px;
+        cursor:pointer;
+        height:35px;
+        width:35px;
+}

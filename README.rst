@@ -106,8 +106,9 @@ this:
   ___________________________
    - display: block
 
+The option used to specify the CSS directory is compatible with all
+other options. The other options can't be mixed (you can't specify a
+selector and a rule for example).
 
-Using with Python
------------------
 
 

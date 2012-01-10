@@ -1,0 +1,14 @@
+/* This is a DTML file as used by Plone/Zope */
+
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+body {
+  font: &dtml-REALfontBaseSize; <dtml-var fontFamily>;
+  background-color: &dtml-backgroundColor;;
+  color: &dtml-fontColor;;
+  margin: 0;
+  padding: 0;
+}
+
+/* </dtml-with> */

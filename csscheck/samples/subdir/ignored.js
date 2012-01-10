@@ -1,0 +1,1 @@
+/* This file too will be ignored as it has extension .js */

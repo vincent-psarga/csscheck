@@ -8,6 +8,57 @@ from csscheck import commands
 def build_css_file(path, css_files_ext = None):
     """ Returns a string containing all CSS
     files concatenated.
+
+    We first need a clean way to find the exact path of the samples directory.
+    Once again this is some code stolen from Reinout or Maurits van Rees:
+     - Reinout: http://reinout.vanrees.org/
+     - Maurits: http://maurits.vanrees.org/
+    >>> here = lambda *x: os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
+
+    The samples directory list some simple CSS files and sub-directories:
+    >>> print build_css_file(here('samples'))
+    /* samples/file1.css */
+    * {
+        margin: 0px;
+        padding: 0px;
+    }/* samples/file2.css */
+    .body {
+        width: 800px;
+    }
+    <BLANKLINE>
+    .footer {
+        width: 800px;
+    }/* This is a DTML file as used by Plone/Zope */
+    <BLANKLINE>
+    /* <dtml-with base_properties> (do not remove this :) */
+    /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+    <BLANKLINE>
+    body {
+      font: &dtml-REALfontBaseSize; <dtml-var fontFamily>;
+      background-color: &dtml-backgroundColor;;
+      color: &dtml-fontColor;;
+      margin: 0;
+      padding: 0;
+    }
+    <BLANKLINE>
+    /* </dtml-with> *//* A CSS file located in a sub-directory */
+    <BLANKLINE>
+    .overlay .close {
+            background-image:url('overlay_close.png');
+            position:absolute;
+            left: -15px;
+            top: -15px;
+            cursor:pointer;
+            height:35px;
+            width:35px;
+    }
+
+
+    We can also specify custom extensions:
+    >>> print build_css_file(here('samples'), ['.py'])
+    # This Python file will not be read if we do not specify '.py' as a CSS extension.
+    <BLANKLINE>
+
     """
     if css_files_ext is None:
         css_files_ext = ['.css', '.css.dtml']
