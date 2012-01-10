@@ -1,13 +1,15 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '1.0'
+version = open(os.path.join("version.txt")).read().strip()
 
 setup(name='csscheck',
       version=version,
       description="Simple command line tool to help CSS developers",
-      long_description="""\
-""",
+      long_description=open("README.rst").read() + "\n" +
+                       open(os.path.join("csscheck",
+                                         "HISTORY.txt")).read(),
+
       classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       keywords='',
       author='Vincent Pretre (Zest software)',
@@ -19,6 +21,7 @@ setup(name='csscheck',
       zip_safe=True,
       install_requires=[
           # -*- Extra requirements: -*-
+          'cssutils'
       ],
       entry_points="""
       # -*- Entry points: -*-
