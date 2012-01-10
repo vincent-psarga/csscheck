@@ -26,38 +26,26 @@ def build_css_file(path, css_files_ext = None):
     return rules
 
 def build_mappings(content):
-    """  Builds the mapping dictionnaries rule_to_selectors and selector_to_rules
+    """
+    Builds the mapping dictionnaries rule_to_selectors and selector_to_rules
     form the content file.
 
-    >>> build_mapping('')
-    {}, {}
+    >>> build_mappings('')
+    ({}, {})
 
-    >>> content = """
-    ... my_selector {
-    ...   display: none;
-    ... }
-    ... """
-    >>> build_mapping(content)
-    {'display: none;': ['my_selector']}, {'my_selector': ['display: none;']}
+    >>> content = 'my_selector {display: none; }'
 
-    >>> content = """
-    ... my_selector {
-    ...   display: none;
-    ...   text-align: left;
-    ... }
-    ... another_selector {
-    ...   text-align: left;
-    ...   display: block;
-    ... }
-    ... """
+    >>> build_mappings(content)
+    ({u'display: none': [u'my_selector']}, {u'my_selector': [u'display: none']})
 
-    >>> build_mapping(content)
-    {'display: none;': ['my_selector'],
-     'display: block;': ['another_selector'],
-     'text-align: left': ['my_selector, 'another_selector']},
-    {'my_selector': ['display: none;', 'text-align: left;'],
-     'another_selector': ['display: block;', 'text-align: left;'],
-    }
+    >>> content = 'my_selector {display: none; text-align: left;}'
+    >>> content += 'another_selector {text-align: left; display: block;}'
+    >>> build_mappings(content)
+    ({u'text-align: left': [u'my_selector', u'another_selector'],
+      u'display: block': [u'another_selector'],
+      u'display: none': [u'my_selector']},
+     {u'my_selector': [u'display: none', u'text-align: left'],
+      u'another_selector': [u'text-align: left', u'display: block']})
     """
     sheet = cssutils.CSSParser(loglevel='CRITICAL').parseString(content, validate = False)
     rule_to_selectors = {}
@@ -66,7 +54,7 @@ def build_mappings(content):
     for rule in sheet.cssRules:
         try:
             selectors = [s.selectorText for s in rule.selectorList]
-            applied = [r.strip() for r in rule.style.cssText.split('\n')]
+            applied = [r.strip().replace(';', '') for r in rule.style.cssText.split('\n')]
         except AttributeError:
             # Might be a comment.
             continue
@@ -112,3 +100,6 @@ def main():
         return
 
     commands.show_multi_use(rule_to_selectors)
+
+if __name__ == '__main__':
+    main()

@@ -17,7 +17,7 @@ The tool can be installed using easy_install:
 You can then define an alias to run the tool (in your .bashrc or
 .profile file):
 
-  alias css_check="python -m csscheck.__main__"
+  alias css_check="python -m csscheck.main"
 
 
 Usage
@@ -105,3 +105,9 @@ this:
   Rules applied for "footer":
   ___________________________
    - display: block
+
+
+Using with Python
+-----------------
+
+

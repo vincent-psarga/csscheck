@@ -26,8 +26,7 @@ def dual_list_to_dict(d, keys, values):
     >>> dual_list_to_dict(d, ['a', 'a1'], ['b'])
     >>> d
     {'a': ['b', 'c', 'd', 'x', 'y'],
-     'a1': ['x', 'y'. 'b']}
-    
+     'a1': ['x', 'y', 'b']}
     """
     for key in keys:
         if not key in d:
@@ -42,14 +41,18 @@ def display_list(header, elements):
 
     >>> display_list('My header message', ['point 1', 'point 2'])
     My header message
-    -----------------
-    - point 1
-    - point 2
+    _________________
+     - point 1
+     - point 2
+    <BLANKLINE>
+    <BLANKLINE>
 
-    If the list is empty, it just displays the header:
+        If the list is empty, it just displays the header:
     >>> display_list('My header message', [])
     My header message
-    -----------------
+    _________________
+    <BLANKLINE>
+    <BLANKLINE>
 
     """
     print header
