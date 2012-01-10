@@ -12,10 +12,12 @@ Install
 
 The tool can be installed using easy_install:
 
+
   easy_install csscheck
 
 You can then define an alias to run the tool (in your .bashrc or
 .profile file):
+
 
   alias css_check="python -m csscheck.main"
 
@@ -27,6 +29,7 @@ When you simply run the ``css_check`` command created earlier, it will
 seek for all CSS files in the current directory (and sub-directories)
 and provide the list of CSS rules applied to more than one element.
 For example:
+
 
   Rule "display: block" -  used 4 times:
   ______________________________________
@@ -42,20 +45,26 @@ For example:
    - #main > nav > ul > li
    - #main > footer
 
+
 You can also specify the directory in which the CSS files must be
 checked, using the ``-d`` option:
 
+
   css_check -d media/green_theme
+
 
 You can also check for which elements a CSS rule is applied. To do so,
 you can use the ``-r`` or ``--rule=`` option.
 For example:
 
+
   bin/css_min.py  --rule="display: block"
+
 
 Those options will check all rules that contain the one you asked
 for. So if you run ``bin/css_min.py -r background``, the output will
 be:
+
 
   Selectors for which "background: #F60;" is applied:
   ___________________________________________________
@@ -73,6 +82,7 @@ be:
    - #main > nav > ul > li
    - #main > footer
 
+
 You can use a strict rule checking using the ``-R`` or
 ``--exact_rule`` option. In that case, you'll get an exact
 match. Running ``bin/css_min.py -R background`` will not give any
@@ -82,6 +92,7 @@ The tool also allows to know which rules are applied to a selector,
 using the ``-s`` or ``--selector`` option.
 For example, running ``bin/css_min.py -s footer`` will output all
 rules applied for selectors containing the work ``footer``:
+
 
   Rules applied for "#main > footer a:hover":
   ___________________________________________
@@ -97,18 +108,20 @@ rules applied for selectors containing the work ``footer``:
   ______________________________________
    - display: inline
 
+
 Once again, you can specify the exact selector, using options ``-S``
 or ``--exact_selector``.
 Running the command ``bin/css_min.py -S footer`` will only output
 this:
 
+
   Rules applied for "footer":
   ___________________________
    - display: block
 
+
 The option used to specify the CSS directory is compatible with all
 other options. The other options can't be mixed (you can't specify a
 selector and a rule for example).
-
 
 
