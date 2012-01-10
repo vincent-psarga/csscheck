@@ -54,11 +54,11 @@ You can also check for which elements a CSS rule is applied. To do so,
 you can use the ``-r`` or ``--rule=`` option.
 For example::
 
-  bin/css_min.py  --rule="display: block"
+  css_check  --rule="display: block"
 
 
 Those options will check all rules that contain the one you asked
-for. So if you run ``bin/css_min.py -r background``, the output will
+for. So if you run ``css_check -r background``, the output will
 be::
 
   Selectors for which "background: #F60;" is applied:
@@ -80,12 +80,12 @@ be::
 
 You can use a strict rule checking using the ``-R`` or
 ``--exact_rule`` option. In that case, you'll get an exact
-match. Running ``bin/css_min.py -R background`` will not give any
+match. Running ``css_check -R background`` will not give any
 result.
 
 The tool also allows to know which rules are applied to a selector,
 using the ``-s`` or ``--selector`` option.
-For example, running ``bin/css_min.py -s footer`` will output all
+For example, running ``css_check -s footer`` will output all
 rules applied for selectors containing the work ``footer``::
 
   Rules applied for "#main > footer a:hover":
@@ -105,7 +105,7 @@ rules applied for selectors containing the work ``footer``::
 
 Once again, you can specify the exact selector, using options ``-S``
 or ``--exact_selector``.
-Running the command ``bin/css_min.py -S footer`` will only output
+Running the command ``css_check -S footer`` will only output
 this::
 
   Rules applied for "footer":
