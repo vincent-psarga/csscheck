@@ -130,22 +130,22 @@ def main():
     rule_to_selectors, selector_to_rules = build_mappings(rules)
 
     if options.RULE:
-        commands.show_rules_for_selector(rule_to_selectors, options.RULE)
+        commands.show_selectors_for_rule(rule_to_selectors, options.RULE)
         return
 
     if options.EXACT_RULE:
-        commands.show_rules_for_selector(rule_to_selectors,
+        commands.show_selectors_for_rule(rule_to_selectors,
                                          options.EXACT_RULE,
                                          exact = True)
         return
 
     if options.SELECTOR:
-        commands.show_selectors_for_rule(selector_to_rules,
+        commands.show_rules_for_selector(selector_to_rules,
                                          options.SELECTOR)
         return
 
     if options.EXACT_SELECTOR:
-        commands.show_selectors_for_rule(selector_to_rules,
+        commands.show_rules_for_selector(selector_to_rules,
                                          options.EXACT_SELECTOR,
                                          exact = True)
         return

@@ -23,7 +23,9 @@ setup(name='csscheck',
           # -*- Extra requirements: -*-
           'cssutils'
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
+      
+      entry_points={
+          'console_scripts': [
+              'css_check = csscheck.main:main'
+              ]}
       )
