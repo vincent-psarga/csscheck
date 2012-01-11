@@ -1,7 +1,7 @@
 Change log for CSSCheck
 =======================
 
-1.0 (unreleased):
------------------
+1.0 (2012-01-11)
+----------------
 
  - created product. [vincent]
