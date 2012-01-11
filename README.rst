@@ -20,6 +20,15 @@ You can then define an alias to run the tool (in your .bashrc or
 
   alias css_check="python -m csscheck.main"
 
+If you have a buildout with the ``bin`` flder contained in your path,
+you can add this part::
+
+  [css_check]
+  recipe = zc.recipe.egg
+  eggs = csscheck
+
+That will automatically create a new executable ``cs_check`` in the
+``bin`` folder of your buildout.
 
 Usage
 -----
