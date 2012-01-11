@@ -1,4 +1,7 @@
-csscheck
---------
+Change log for CSSCheck
+=======================
+
+1.0 (unreleased):
+-----------------
 
  - created product. [vincent]
